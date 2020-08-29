@@ -4,13 +4,14 @@
 using namespace sf; 
 int main()
 {
-	RenderWindow window(VideoMode(1440, 980), "Game from scratch!",Style::Default);
+	RenderWindow window(VideoMode(1440, 980), "Game from scratch!", Style::Default);
 	window.setFramerateLimit(50);
 
-	////// Circle
-	CircleShape collision(100.f);
-	collision.setPosition({ 200.f, 200.f });
-	collision.setFillColor(Color::Red);
+	////// Square
+	RectangleShape collision(Vector2f(100.f,100.f));
+	collision.setPosition(200.f, 200.f );
+	collision.setFillColor(Color(255,200,100,100));
+	
 
 	////// Texture สร้างตัวละคร, โหลดจากไฟล์png
 	Texture playerTexture;
@@ -30,6 +31,7 @@ int main()
 		window.display();
 
 		//// Movement การเคลื่อนที่ 
+		
 		shapeSprite.move(0.f, .8f);
 		if (Keyboard::isKeyPressed(Keyboard::D))
 		{
