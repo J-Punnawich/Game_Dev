@@ -1,34 +1,26 @@
-#include "player.h"
+#include "Player.h"
+#include "animations.h"
 
-player::player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) :
-	animations(texture,imageCount,switchTime)
+Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
+	Animation(texture,imageCount,switchTime)
 {
 	this->speed = speed;
 	row = 0;
+	faceright = true;
 
-	
-	
-	sf::Sprite body;
-	body.setTexture(playerTexture);
+	enermy1Texture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf2.png");
+	bodyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf.png");
 
+	enermy1.setTexture(enermy1Texture);
+	body.setTexture(bodyTexture);
+}
 
-}   
-
-
-
-/*void player::Update(float deltaTime,Sprite body)
+void Player::Update(float deltatime)
 {
-	
-	  
-	if (Keyboard::isKeyPressed(Keyboard::D))
-		body.move(0.f, .2f);
+}
 
-
-	animations.Update(float deltaTime);
-	body.move();
-} */
-
-void player::Draw(RenderWindow window)
+void Player::Draw(sf::RenderWindow window)
 {
 	window.draw(body);
+	window.draw(enermy1);
 }

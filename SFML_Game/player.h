@@ -1,17 +1,24 @@
+#pragma once
+#include <SFML\Graphics.hpp>
 #include "animations.h"
-#include <SFML/Graphics.hpp>
-using namespace sf;
+class Player
+{
+private:
+	sf::Texture bodyTexture, enermy1Texture;
+	sf::Sprite body, enermy1;
+	
 
-class player
-{ 
-public:
-	player();
+	animations Animations;
 
-	void Update(float deltaTime);
-	void Draw(RenderWindow window);
-private: 
-	Texture playerTexture;
-	animations animations;
+	unsigned int row;
 	float speed;
-};
+	bool faceright;
 
+
+public:
+	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime,float speed);
+	
+
+	void Update(float deltatime);
+	void Draw(sf::RenderWindow window);
+};
