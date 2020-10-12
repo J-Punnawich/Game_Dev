@@ -20,5 +20,6 @@ public:
 	
 
 	void Update(float deltatime);
-	void Draw(sf::RenderWindow window);
+	void Draw(sf::RenderWindow& window);
+
 };

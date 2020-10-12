@@ -1,5 +1,5 @@
-#include <SFML/Graphics.hpp>
-
+/*#include <SFML/Graphics.hpp>
+#include <iostream>
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1080, 720), "Game from scratch!");
@@ -17,7 +17,13 @@ int main()
 		{
 			window.close();
 		}
+		// on screen
+		std::cout << "Mouse pos  " << sf::Mouse::getPosition(window).x << " " << sf::Mouse::getPosition(window).y << "\n";
+
+
+		std::cout << "Mouse pos  " << sf::Mouse::getPosition(window).x << " " << sf::Mouse::getPosition(window).y << "\n";
+
 		window.clear();
 	}
 	return 0;
-}
+}*/

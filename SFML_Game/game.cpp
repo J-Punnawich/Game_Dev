@@ -1,18 +1,10 @@
 ﻿/*#include "game.h"
-#include "player.h"
-
-//Private Functions
-void game::titleVariable()
-{
-    this->window = nullptr;
-   
-}
+#include "Player.h"
+#include "animations.h"
 
 void game::titleWindow()
 {
-    this->videoMode.height = 800;
-    this->videoMode.width = 600;
-    this->window = new sf::RenderWindow(this->videoMode, "Game",sf::Style::Close | sf::Style::Titlebar);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Game", sf::Style::Close | sf::Style::Default);
     this->window->setFramerateLimit(60);
 }
 void game::pollEvent()
@@ -36,10 +28,9 @@ void game::pollEvent()
         }
     }
 }
-void game::titlePlayer()
-{
-    this->Player = new  player();
-}
+
+
+
 
 
 //Construtor ,Destructor /// จะทำงานเเน่ๆ เมื่อเรียกใช้ game.
@@ -48,14 +39,14 @@ game::game()  /// เรียกใช้ฟังชั่นตัวแป�
 {
     this->titleVariable();
     this->titleWindow();
-    this->titlePlayer();
+   
     this->pollEvent();
 }
 
 void game::regame()
 {
     delete this->window;
-    delete this->Player;
+    delete this->player;
 }
     
 //checker
@@ -68,27 +59,21 @@ const bool game::running() const
 
 
 
+
 ///Functions    /// ต้องเรียกใช้เป็นจุดๆไป เช่น game.update
 
-void game::updatplayer()
-{
-    this->Player->Update();
-}
-
-void game::renderplayer()
-{
-    this->Player->render(this->window);
-}
-
-
-
-
-
  
+
+
+
+
+
+
+
 void game::update()
 {
     this->pollEvent();
-    this->updatplayer();
+    this->player->Update(this->);
     
    
 
@@ -103,7 +88,8 @@ void game::render()
 
 
     ///render stuff
-    this->renderplayer();
+    
+    this->player->Draw(this->window);
     
     
 
@@ -117,3 +103,4 @@ void game::render()
 
 
 
+ 

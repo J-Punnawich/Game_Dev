@@ -7,8 +7,8 @@
 #include <vector>
 #include <ctime>
 
-
 #include "player.h"
+#include "animations.h"
 
 
 
@@ -21,7 +21,7 @@ private:
 	
 	//Window
 	sf::RenderWindow* window;
-	sf::VideoMode videoMode;
+	
 	sf::Event ev;
 
 	//Private Functions
@@ -30,11 +30,12 @@ private:
 
 	void titleWindow();
 	void titlePlayer();
-	
+
 
 
 	//Game objects
-	player* Player;
+	Player  *player;
+	
 	
 
 public:
@@ -51,10 +52,9 @@ public:
 	
 	void update();
 	void render();
-
-	void updatplayer();
-	void renderplayer();
 	
 	
 
-}; */
+	
+	
+};*/

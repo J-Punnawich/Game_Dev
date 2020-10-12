@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="animations.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="justcaseforHw.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
