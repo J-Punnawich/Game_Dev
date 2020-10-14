@@ -149,11 +149,13 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="justcaseforHw.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animations.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

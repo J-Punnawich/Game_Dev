@@ -17,23 +17,44 @@ animations::animations(sf::Texture* texture, sf::Vector2u imageCount, float swit
 }
 
 
-void animations::Update(int row, float deltaTime)
+void animations::Updateinteract(int collum, float deltaTime)
 {
-	currentImage.y = row ;
+	currentImage.x = collum;
 	totalTime += deltaTime;
-	
-	if (totalTime >= switchTime) 
+
+	if (totalTime >= switchTime)
 	{
 		totalTime -= switchTime;
-		currentImage.x++;
-		if(currentImage.x >= imageCount.x)
+		currentImage.y++;
+		if (currentImage.y >= imageCount.y)
 		{
-			currentImage.x = 0;
+			currentImage.y = 0;
 		}
 	}
 
 	uvrect.left = currentImage.x * uvrect.width;
 	uvrect.top = currentImage.y * uvrect.height;
+
+}
+
+void animations::Update(int row, float deltaTime)
+{
+		currentImage.y = row;
+		totalTime += deltaTime;
+
+		if (totalTime >= switchTime)
+		{
+			totalTime -= switchTime;
+			currentImage.x++;
+			if (currentImage.x >= imageCount.x)
+			{
+				currentImage.x = 0;
+			}
+		}
+
+		uvrect.left = currentImage.x * uvrect.width;
+		uvrect.top = currentImage.y * uvrect.height;
+}
 	/*if (faceright)
 	{
 		uvrect.left = currentImage.x * uvrect.width;
@@ -44,4 +65,4 @@ void animations::Update(int row, float deltaTime)
 	uvrect.width = -abs(uvrect.width);*/
 
 	
-}
+

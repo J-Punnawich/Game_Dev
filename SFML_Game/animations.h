@@ -22,7 +22,8 @@ public:
 	animations(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
 
 	void Update(int row, float deltaTime);
-	
+
+	void Updateinteract(int collum, float deltatTime);
 
 	
 	sf::IntRect uvrect;

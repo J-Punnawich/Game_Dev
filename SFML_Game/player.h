@@ -4,13 +4,18 @@
 class Player
 {
 private:
-	sf::Texture bodyTexture, enermy1Texture;
-	sf::Sprite body, enermy1;
-	
+	sf::Texture bodyTexture, enermy1Texture, SpeedItemTexture;
+	sf::Sprite body, enermy1, speedItem;
+	sf::Vector2u imageCount;
+	sf::Vector2u currentImage;
 
 	animations Animations;
-
+	
+	
+	float totalTime;
+	float switchTime;
 	unsigned int row;
+	
 	float speed;
 	bool faceright;
 
@@ -20,6 +25,10 @@ public:
 	
 
 	void Update(float deltatime);
-	void Draw(sf::RenderWindow& window);
+	void Sprite();
+	void Texture(); 
+
+
+	void Draw(sf::RenderTarget& target);
 
 };

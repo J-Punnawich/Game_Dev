@@ -3,26 +3,42 @@
 #include "animations.h"
 #include "Player.h"
 #include "game.h"
+#include "object.h"
 
 using namespace sf; 
 int main()
-{   /// use 1720,1000
+{  /* /// use 1720,1000
 	sf::RenderWindow window(sf::VideoMode(800,600), "Game", sf::Style::Close | sf::Style::Default);
 	
-	//game Game;
+	//
+	std::srand(static_cast<unsigned>(time(NULL))); */
+
+	
+	game Game;
 	
 
-	sf::Texture bodyTexture, enermy1Texture;
-	enermy1Texture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf2.png");
+	/*sf::Texture bodyTexture, enermy1Texture,SpeedItemTexture,sandbarTexture;
+	enermy1Texture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/enermy1.png");
 	bodyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf.png");
+	SpeedItemTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/interact.png");
+	sandbarTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/sandbar.png");
+	
+	sf::Sprite body, enermy1, speedItem,sandbar;
 
-	sf::Sprite body, enermy1;
 	enermy1.setTexture(enermy1Texture);
 	body.setTexture(bodyTexture);
+	speedItem.setTexture(SpeedItemTexture);
+	sandbar.setTexture(sandbarTexture);
+
+
+	object sandbarSprite(&sandbarTexture, Vector2u(4, 1), 0.5f);
+
 
 	////// เรียกใช้ฟังขั่น  (ตัวTexture , จำนวน (แถว,คอลั่ม) , ความเร็วในการ switch )
-	animations animations(&bodyTexture, Vector2u(4, 4), 0.4f) 
-		      ,animations2(&enermy1Texture,Vector2u(4,4), 0.9f) ;
+	animations animationsBody(&bodyTexture, Vector2u(4, 4), 0.4f)
+		, animationsEnermy1(&enermy1Texture, Vector2u(2, 6), 0.4f)
+		, animationsSpeedItem(&SpeedItemTexture, Vector2u(8, 4), 0.4f);
+			
     
 
 	Player player(&bodyTexture , sf::Vector2u(4,4), 0.4f, 100.f);
@@ -49,21 +65,30 @@ int main()
 			}
 		}
 
-		//Game.update();
+		Game.update();
 
 
-		//Game.render();
+		Game.render();
 
 		/////// จะอัพเดทให้ player มีการขยับอยู่ตลอดเวลา ตามภาพ png แถวที่ 0 
-		/*animations.Update(0, deltaTime);
-		animations2.Update(0, deltaTime);*/
+		animationsBody.Update(0, deltaTime);
+		animationsEnermy1.Updateinteract(0, deltaTime);
+		animationsSpeedItem.Updateinteract(2, deltaTime);
 
 		///// ใช้คำสั่ง uvrect ในheader animations คำนวณกำหนดกรอบให้ bodySprite และกำหนดให้แสดงภาพแต่ละจุด ex (0,1) (0,2) ...
-		body.setTextureRect(animations.uvrect);
-		enermy1.setTextureRect(animations2.uvrect);
-
+		body.setTextureRect(animationsBody.uvrect);
+		enermy1.setTextureRect(animationsEnermy1.uvrect);
+		speedItem.setTextureRect(animationsSpeedItem.uvrect);
+		sandbar.setTextureRect(sandbarSprite.uvrect);
+		
+		sandbar.setPosition(200.f, 300.f);
 		///
 		player.Update(deltaTime);
+
+
+		///
+		
+
 
 		///
 		if (enermy1.getGlobalBounds().intersects(body.getGlobalBounds())) {
@@ -71,16 +96,21 @@ int main()
 		}
 
 
-		window.clear(sf::Color(0,150,150));
-		
 
+		window.clear(sf::Color(0,150,150));
+			
+		
+		window.draw(speedItem);
+		
 		window.draw(enermy1);
-		player.Draw(window);
+		window.draw(sandbar);
+		//player.Draw(window);
 		window.display();
 		
 	
 		
-	}
+	}*/
+	Game.run();
 		return 0;
 
 }

@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
@@ -23,20 +23,19 @@ private:
 	sf::RenderWindow* window;
 	
 	sf::Event ev;
-
+	sf::Vector2u imageCount;
+	
+	
 	//Private Functions
 	void pollEvent();
-	void titleVariable();
-
 	void titleWindow();
 	void titlePlayer();
 
 
 
 	//Game objects
-	Player  *player;
-	
-	
+	Player * player;
+	sf::Texture bodyTexture;
 
 public:
 
@@ -46,15 +45,18 @@ public:
 
 
 	//checker
-	const bool running() const;
+	
 
 	//function
 	
+	void run();
+
 	void update();
 	void render();
 	
 	
-
+	float deltaTime = 0.f;
+	sf::Clock clock;
 	
 	
-};*/
+};

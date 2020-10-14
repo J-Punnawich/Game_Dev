@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "animations.h"
+
 
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed):
 	Animations(texture, imageCount, switchTime)
@@ -7,12 +7,15 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	this->speed = speed;
 	row = 0;
 	faceright = true;
+	this->bodyTexture = *texture;
 
-	enermy1Texture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf2.png");
-	bodyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf.png");
+	this->Texture();
+	this->Sprite();
+	
+	
 
-	enermy1.setTexture(enermy1Texture);
-	body.setTexture(bodyTexture);
+	
+	
 
 
 	
@@ -42,10 +45,26 @@ void Player::Update(float deltatime)
 	body.setTextureRect(Animations.uvrect);
 	body.move(movement);
 }
-
-
-void Player::Draw(sf::RenderWindow& window)
+void Player::Texture()
 {
-	window.draw(body);
+	this->enermy1Texture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/enermy1.png");
+	//this->bodyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf.png");
+	this->SpeedItemTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/interact.png");
+}
+void Player::Sprite()
+{
+	
+	this->body.setTexture(this->bodyTexture);
+	this->enermy1.setTexture(this->enermy1Texture);
+	this->speedItem.setTexture(this->SpeedItemTexture);
+}
+
+
+
+
+void Player::Draw(sf::RenderTarget& target)
+{
+	target.draw(this->body);
+
 	
 }
