@@ -8,20 +8,22 @@ class object
 
 private:
 
-	sf::Texture sandbarTexture;
+	sf::Texture sandbarTexture, SpeedItemTexture;
+	sf::Sprite sandbar, speedItem;
 
-	sf::Sprite sandbar;
-
-	//Player player;
-	animations Animations;
+	
+	animations AnimationsItem;
 	
 
 
 public:
 
-	object(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
-
-	void Draw(sf::RenderWindow& window);
+	object(sf::Texture* textureobject, sf::Vector2u imageCount, float switchTime);
 	sf::IntRect uvrect;
+
+
+	void DrawObject(sf::RenderTarget& targetobject);
+	void Sprite();
+	void setUvrectObject(sf::Texture* textureobject, sf::Vector2u imageCount);
 };
 

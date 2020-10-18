@@ -146,7 +146,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="animations.cpp" />
+    <ClCompile Include="Enermy.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="justcaseforHw.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
@@ -154,7 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animations.h" />
+    <ClInclude Include="Enermy.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

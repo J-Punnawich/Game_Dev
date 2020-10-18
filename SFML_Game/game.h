@@ -9,43 +9,47 @@
 
 #include "player.h"
 #include "animations.h"
-
-
+#include "Enermy.h"
+#include "object.h"
 
 class game
 {
 private:
 	
 	//Variable
-
+	sf::Vector2u imageCount;
 	
 	//Window
 	sf::RenderWindow* window;
-	
 	sf::Event ev;
-	sf::Vector2u imageCount;
+	
 	
 	
 	//Private Functions
 	void pollEvent();
 	void titleWindow();
 	void titlePlayer();
-
-
+	void titleEnermy();
+	void titleObject();
 
 	//Game objects
-	Player * player;
-	sf::Texture bodyTexture;
-
+	Enermy* enermy;
+	Player* player;
+	object* Object;
+	
+	sf::Texture bodyTexture,enermyTexture,sandbarTexture;
+	
 public:
 
 	//constructor 
 	game();
 	void regame();
 
-
-	//checker
 	
+	//variable
+	float deltaTime = 0.f;
+	sf::Clock clock;
+
 
 	//function
 	
@@ -55,8 +59,6 @@ public:
 	void render();
 	
 	
-	float deltaTime = 0.f;
-	sf::Clock clock;
 	
 	
 };

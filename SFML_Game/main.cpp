@@ -7,11 +7,12 @@
 
 using namespace sf; 
 int main()
-{  /* /// use 1720,1000
+{  
+/* /// use 1720,1000
 	sf::RenderWindow window(sf::VideoMode(800,600), "Game", sf::Style::Close | sf::Style::Default);
+	*/
 	
-	//
-	std::srand(static_cast<unsigned>(time(NULL))); */
+	std::srand(static_cast<unsigned>(time(NULL))); 
 
 	
 	game Game;
@@ -110,7 +111,7 @@ int main()
 	
 		
 	}*/
-	Game.run();
+		Game.run();
 		return 0;
 
 }
