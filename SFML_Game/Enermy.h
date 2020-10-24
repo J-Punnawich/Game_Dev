@@ -4,8 +4,8 @@
 class Enermy
 {	
 private:
-	sf::Texture  enermyTexture;
-	sf::Sprite  enermy;
+	sf::Texture  enermy1Texture;
+	sf::Sprite  enermy1;
 	sf::Vector2u imageCount;
 	
 
@@ -18,7 +18,7 @@ private:
 
 
 
-	void Sprite();
+	
 
 
 
@@ -28,5 +28,7 @@ public:
 
 	void UpdateEnermy(float deltaTime);
 	void Drawenermy(sf::RenderTarget& target);
+	void enermySprite();
+	void spawnEnermy(float pos_x, float pos_y);
 };
 

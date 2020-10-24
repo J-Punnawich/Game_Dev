@@ -15,11 +15,9 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	
 }
 
-
-
 void Player::Updateplayer(float deltatime)
 {	
-	sf::Vector2f movement(0.0f, 0.01f);
+	sf::Vector2f movement(0.0f, 0.9f);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
@@ -45,8 +43,8 @@ void Player::Updateplayer(float deltatime)
 void Player::Sprite()
 {
 	this->body.setTexture(this->bodyTexture);
+	
 }
-
 
 void Player::Drawplayer(sf::RenderTarget& target)
 {

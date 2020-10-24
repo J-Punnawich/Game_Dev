@@ -13,12 +13,17 @@ int main()
 	*/
 	
 	std::srand(static_cast<unsigned>(time(NULL))); 
-
 	
 	game Game;
-	
+	/*sf::Texture bodyTexture, enermyTexture, SpeedItemTexture, sandbarTexture;
+	enermyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/enermy1.png");
+	bodyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf.png");
 
-	/*sf::Texture bodyTexture, enermy1Texture,SpeedItemTexture,sandbarTexture;
+	sf::Sprite body, enermy, speedItem, sandbar;
+
+	enermy.setTexture(enermyTexture);
+	body.setTexture(bodyTexture);
+	sf::Texture bodyTexture, enermy1Texture,SpeedItemTexture,sandbarTexture;
 	enermy1Texture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/enermy1.png");
 	bodyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/surf.png");
 	SpeedItemTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/interact.png");
@@ -91,8 +96,8 @@ int main()
 		
 
 
-		///
-		if (enermy1.getGlobalBounds().intersects(body.getGlobalBounds())) {
+		
+		///if (enermy1.getGlobalBounds().intersects(body.getGlobalBounds())) {
 			body.setPosition(0.f,0.f);
 		}
 
@@ -111,8 +116,8 @@ int main()
 	
 		
 	}*/
-		Game.run();
-		return 0;
+	Game.run();
+	
 
 }
 

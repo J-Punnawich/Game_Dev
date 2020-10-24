@@ -1,4 +1,5 @@
-﻿#include "game.h"
+﻿#include <iostream>
+#include "game.h"
 #include "Player.h"
 #include "animations.h"
 
@@ -8,9 +9,14 @@ void game::titleWindow()
    this->window = new  sf::RenderWindow (sf::VideoMode(800, 600), "Game", sf::Style::Close | sf::Style::Default);
    this->window->setFramerateLimit(60);
    this->window->setVerticalSyncEnabled(false);
+
+   bg1 = new sf::RectangleShape(sf::Vector2f(256.f, 256.f));
+   bgTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/background.png");
+   bg1->setTexture(&bgTexture);
+
+  
+   
 }
-
-
 
 void game::titlePlayer()
 {
@@ -22,9 +28,16 @@ void game::titlePlayer()
 }
 
 void game::titleEnermy()
-{
+{   
+   
     this->enermyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/enermy1.png");
-    this->enermy = new Enermy(&enermyTexture, sf::Vector2u(2, 6), 0.5f);
+    
+    enermy = new Enermy(&enermyTexture, sf::Vector2u(2, 6), 0.5f);
+    //enermy1->setTexture(this->enermyTexture);
+    
+    this->spawnTimerMax = 50.f;
+    this->spawnTimer = this->spawnTimerMax;
+        
 }
 
 void game::titleObject()
@@ -34,8 +47,6 @@ void game::titleObject()
     this->Object->setUvrectObject(&sandbarTexture, sf::Vector2u(4,1));
    
 }
-
-
 
 void game::pollEvent()
 {
@@ -60,10 +71,7 @@ void game::pollEvent()
     }
 }
 
-
  
-
-
 /// เรียกใช้ฟังชั่นตัวแปรเริ่มต้น กับ หน้าต่างเริ่มต้น
 game::game() 
 {
@@ -73,6 +81,7 @@ game::game()
     this->pollEvent();
     this->titleEnermy();
     this->titleObject();
+    
   
 }
 
@@ -81,7 +90,7 @@ void game::regame()
     delete this->window;
     delete this->player;
     delete this->enermy;
-   
+    
 
 }
 
@@ -102,20 +111,33 @@ void game::run()
     
 }
 
+void game::upenemies()
+{   //เวลาในการ spawn
+    this->spawnTimer += 0.4f;
+    if (this->spawnTimer >= this->spawnTimerMax)
+    {   
+        this->enermy->spawnEnermy(rand()%200, -140); 
+        this->spawnTimer = 0.f;
+    }
+  /*  for (auto* enermy : this->enemies)
+    {
+        enermy->UpdateEnermy(this->deltaTime);
+    }*/
+}
+
 void game::update()
 {   
     this->deltaTime = clock.restart().asSeconds();
-  
+    this->pollEvent();
     //update movement & animation Player
     this->player->Updateplayer(this->deltaTime);
 
     this->enermy->UpdateEnermy(this->deltaTime);
-   
+    
+    this->upenemies();
+    
     
 }
-
-
-
 
 void game::render()
 {
@@ -123,11 +145,12 @@ void game::render()
 
     
     ///render stuff
-    
+   this->window->draw(*this->bg1);
    this->player->Drawplayer(*this->window);
+   this->window->draw(this->enermy1);
    this->enermy->Drawenermy(*this->window);
    this->Object->DrawObject(*this->window);
-
+   
    ///ต้องเอาไว้ล่างสุด
     this->window->display(); 
     

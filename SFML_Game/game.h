@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -17,6 +18,8 @@ class game
 private:
 	
 	//Variable
+	float spawnTimer;
+	float spawnTimerMax;
 	sf::Vector2u imageCount;
 	
 	//Window
@@ -33,11 +36,15 @@ private:
 	void titleObject();
 
 	//Game objects
+
+	std::vector<Enermy*> enemies;
 	Enermy* enermy;
 	Player* player;
 	object* Object;
-	
-	sf::Texture bodyTexture,enermyTexture,sandbarTexture;
+
+	sf::RectangleShape* bg1,body, enermy1;
+	sf::Texture bodyTexture,enermyTexture,sandbarTexture,bgTexture;
+	//sf::Sprite body, enermy1;
 	
 public:
 
@@ -54,6 +61,8 @@ public:
 	//function
 	
 	void run();
+
+	void upenemies();
 
 	void update();
 	void render();

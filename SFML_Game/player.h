@@ -4,9 +4,9 @@
 class Player
 {
 private:
-
 	sf::Texture bodyTexture;
 	sf::Sprite body;
+	
 
 
 	//Variable
@@ -18,7 +18,7 @@ private:
 
 
 	//function
-	void Sprite();
+	
 	
 	
 	
@@ -32,5 +32,5 @@ public:
 	//functions
 	void Updateplayer(float deltatime);
 	void Drawplayer(sf::RenderTarget& target);
-	
+	void Sprite();
 };
