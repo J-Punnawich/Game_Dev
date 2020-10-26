@@ -55,14 +55,15 @@ void animations::Update(int row, float deltaTime)
 		uvrect.left = currentImage.x * uvrect.width;
 		uvrect.top = currentImage.y * uvrect.height;
 }
-	/*if (faceright)
+/*	if (faceright)
 	{
 		uvrect.left = currentImage.x * uvrect.width;
 		uvrect.width = abs(uvrect.width);
 	}
 	else
 		uvrect.left = (currentImage.x + 1) * uvrect.width;
-	uvrect.width = -abs(uvrect.width);*/
+	uvrect.width = -abs(uvrect.width); */
+
 
 	
 

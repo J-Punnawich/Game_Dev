@@ -33,7 +33,7 @@ void game::titleEnermy()
     this->enermyTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/enermy1.png");
     
     enermy = new Enermy(&enermyTexture, sf::Vector2u(2, 6), 0.5f);
-    //enermy1->setTexture(this->enermyTexture);
+    
     
     this->spawnTimerMax = 50.f;
     this->spawnTimer = this->spawnTimerMax;
@@ -47,6 +47,22 @@ void game::titleObject()
     this->Object->setUvrectObject(&sandbarTexture, sf::Vector2u(4,1));
    
 }
+
+/*void game::titleFont()
+{
+    if (!this->font.loadFromFile("fonts/c"))
+    {
+        std::cout << "Error::Game::titlefont:: could not load FFFFORWA.ttf" << "\n" ;
+    }
+}*/
+
+/*void game::titleText()
+{
+    this->pointtext.setFont(this->font);
+    this->pointtext.setColor(sf::Color::White);
+    this->pointtext.setCharacterSize(24);
+    this->pointtext.setString("test");
+}*/
 
 void game::pollEvent()
 {
@@ -81,7 +97,9 @@ game::game()
     this->pollEvent();
     this->titleEnermy();
     this->titleObject();
-    
+   // this->titleFont();
+   // this->titleText();
+
   
 }
 
@@ -111,7 +129,7 @@ void game::run()
     
 }
 
-void game::upenemies()
+void game::randomenemies()
 {   //เวลาในการ spawn
     this->spawnTimer += 0.4f;
     if (this->spawnTimer >= this->spawnTimerMax)
@@ -122,7 +140,16 @@ void game::upenemies()
   /*  for (auto* enermy : this->enemies)
     {
         enermy->UpdateEnermy(this->deltaTime);
-    }*/
+    }
+    */
+}
+
+void game::updateCollision()
+{
+    if (this->player->getGlobalBounds().intersects(this->enermy->getGlobalBounds()))
+    {
+        this->player->setPosition();
+    }
 }
 
 void game::update()
@@ -134,8 +161,9 @@ void game::update()
 
     this->enermy->UpdateEnermy(this->deltaTime);
     
-    this->upenemies();
-    
+    this->updateCollision();
+    this->randomenemies();
+    this->player->getPoints();
     
 }
 
@@ -147,7 +175,7 @@ void game::render()
     ///render stuff
    this->window->draw(*this->bg1);
    this->player->Drawplayer(*this->window);
-   this->window->draw(this->enermy1);
+   
    this->enermy->Drawenermy(*this->window);
    this->Object->DrawObject(*this->window);
    

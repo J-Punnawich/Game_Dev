@@ -15,14 +15,19 @@ Enermy::Enermy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime):
 	
 }
 
+const sf::FloatRect Enermy::getGlobalBounds() const
+{
+	return this->enermy1.getGlobalBounds();
+}
+
 
 
 void Enermy::UpdateEnermy(float deltaTime)
 {	
 	Animationsenermy.Updateinteract(collum, deltaTime);
 	enermy1.setTextureRect(Animationsenermy.uvrect);
-	enermy1.move(0.f, 1.f);
-	std::cout << enermy1.getPosition().y << "\n";
+	enermy1.move(0.f, 4.f);
+	
 }
 
 void Enermy::enermySprite()
@@ -31,6 +36,8 @@ void Enermy::enermySprite()
 
 
 }
+
+
 
 void Enermy::spawnEnermy(float pos_x,float pos_y)
 {

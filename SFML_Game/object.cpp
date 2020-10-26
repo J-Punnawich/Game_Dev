@@ -34,10 +34,12 @@ void object::Sprite()
 void object::setUvrectObject(sf::Texture* textureobject, sf::Vector2u imageCount)
 {
 	sandbar.setTextureRect(uvrect);
+	
 }
 void object::DrawObject(sf::RenderTarget& targetobject)
 {
 	targetobject.draw(sandbar);
+	
 }
 
 	

@@ -20,12 +20,16 @@ private:
 	//Variable
 	float spawnTimer;
 	float spawnTimerMax;
+	
 	sf::Vector2u imageCount;
 	
 	//Window
 	sf::RenderWindow* window;
 	sf::Event ev;
-	
+	sf::Font font;
+	sf::Text pointtext;
+
+	unsigned points;
 	
 	
 	//Private Functions
@@ -34,6 +38,9 @@ private:
 	void titlePlayer();
 	void titleEnermy();
 	void titleObject();
+	//void titleFont();
+	//void titleText();
+
 
 	//Game objects
 
@@ -42,9 +49,9 @@ private:
 	Player* player;
 	object* Object;
 
-	sf::RectangleShape* bg1,body, enermy1;
+	sf::RectangleShape* bg1;
 	sf::Texture bodyTexture,enermyTexture,sandbarTexture,bgTexture;
-	//sf::Sprite body, enermy1;
+	sf::Sprite* body, enermy1;
 	
 public:
 
@@ -62,12 +69,12 @@ public:
 	
 	void run();
 
-	void upenemies();
-
 	void update();
 	void render();
 	
+
+	void randomenemies();
+	void updateCollision();
 	
 	
-	
-};
+}; 
