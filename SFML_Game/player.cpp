@@ -3,6 +3,7 @@
 #include "game.h"
 
 
+
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed):
 	Animationsplayer(texture, imageCount, switchTime)
 {
@@ -12,9 +13,12 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	
 	this->bodyTexture = *texture;
 	
-	this->Sprite();
-	this->body.setPosition(sf::Vector2f(350.f, 0.f));
-	
+	this->body.setSize(sf::Vector2f(128.f, 128.f));
+	this->body.setTexture(&bodyTexture);
+	this->body.setOrigin(body.getSize()/2.0f);
+	this->body.setScale(0.8, 0.8);
+
+	 
 	
 }
 void Player::titlePhysics()
@@ -30,53 +34,47 @@ const sf::FloatRect Player::getGlobalBounds() const
 
 void Player::Updateplayer(float deltatime)
 {	
-	sf::Vector2f movement(0.0f, 1.f);
+	sf::Vector2f velocity(0.0f, 1.f);
 	
 	
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		row = 1;
-		movement.x -= speed * deltatime;
+		velocity.x -= speed * deltatime;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{	
 		row = 2;
-		movement.x += speed * deltatime;
+		velocity.x += speed * deltatime;
 	}
 	
-	if (movement.x == 0.0f)
+	if (velocity.x == 0.0f)
 	{
 		row = 0;
 	}
 	
 	Animationsplayer.Update(row, deltatime);
 	body.setTextureRect(Animationsplayer.uvrect);
-	body.move(movement);
 	
+	body.move(velocity);
+	
+	//std::cout << velocity.x << "\n" ;
 
-	
 }
 
 void Player::setPosition()
 {
-	this->body.setPosition(350.f,0.f);
+	this->body.setPosition(0.f,0.f);  //origin spawn point 
 	std::cout << "collision!!" << "\n";
 }
 
-void Player::Sprite()
-{
-	this->body.setTexture(this->bodyTexture);
-	
-	
-	
-}
 
-void Player::getPoints()
+
+float Player::getPoints()
 { // แสดงผลคะแนน
-	this->Points = body.getPosition().y;
-		std::cout << this->Points/20 <<" m" << "\n";
-
+	this->Points = (body.getPosition().y)/5;
+  // std::cout << this->Points/20 <<" m" << "\n";
+	return Points;
 }
 
 void Player::Drawplayer(sf::RenderTarget& target)

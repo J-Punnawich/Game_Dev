@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "animations.h"
+#include "SFML\System.hpp"
 class Player
 {
 private:
-	sf::Texture bodyTexture;
-	sf::Sprite body;
-	sf::Vector2f velocity;
+	
+	//sf::Vector2f velocity;
 
 
 	//Variable
@@ -35,11 +35,13 @@ public:
 	
 	const sf::FloatRect getGlobalBounds() const;
 	
+	sf::Texture bodyTexture;
+	sf::RectangleShape body;
 
 	//functions
 	void Updateplayer(float deltatime);
 	void setPosition();
 	void Drawplayer(sf::RenderTarget& target);
-	void Sprite();
-	void getPoints();
+	
+	float getPoints();
 };

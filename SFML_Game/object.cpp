@@ -1,19 +1,25 @@
 ﻿#include "object.h"
 
-#include "animations.h"
 
 
-object::object(sf::Texture* textureobject, sf::Vector2u imageCount,float switchTime):
-	AnimationsItem(textureobject, imageCount ,switchTime)
-{
-	this->sandbarTexture = *textureobject;
-	this->Sprite();
+
+object::object(sf::Texture* textureobject, sf::Vector2u totalImage,sf::Vector2u chooseImage)
+{	
+	//this->chooseImage = chooseImage;
+
 	
+	this->sandbar1Texture = *textureobject;
+	this->object1.setSize(sf::Vector2f(256.f, 128.f));
+	this->object1.setTexture(textureobject);
 	
 
+	//this->sandbar2.setSize(sf::Vector2f(257.f, 128.f));
+	//this->sandbar2Texture = *textureobject;
+	
 	//SpeedItemTexture.loadFromFile("C:/source/repos/Game_Dev/SFML_Game/img/interact.png");
 
-	sandbar.setTexture(sandbarTexture);
+	//sandbar1.setTexture(sandbar1Texture);
+
 	///speedItem.setTexture(SpeedItemTexture);
 
 	
@@ -21,24 +27,27 @@ object::object(sf::Texture* textureobject, sf::Vector2u imageCount,float switchT
 
 
 	//กำหนดกรอบให้กับ sprite ความกว้าง,ความสูง
-	uvrect.width = textureobject->getSize().x / float(imageCount.x);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน x
-	uvrect.height = textureobject->getSize().y / float(imageCount.y);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน y
+	uvrect.width = textureobject->getSize().x / float(totalImage.x);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน x
+	uvrect.height = textureobject->getSize().y / float(totalImage.y);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน y
+	
+	uvrect.left = chooseImage.x * uvrect.width;
+	uvrect.top =  chooseImage.y * uvrect.height;
+
+
 }
 
-void object::Sprite()
-{
-	this->sandbar.setTexture(this->sandbarTexture);
-	this->sandbar.setPosition(200.f, 200.f);
-}
 
-void object::setUvrectObject(sf::Texture* textureobject, sf::Vector2u imageCount)
+
+void object::setUvrectObject(sf::Vector2u totalImage)
 {
-	sandbar.setTextureRect(uvrect);
+     this->object1.setTextureRect(uvrect);
 	
 }
-void object::DrawObject(sf::RenderTarget& targetobject)
-{
-	targetobject.draw(sandbar);
+void object::DrawObject(sf::RenderTarget& target)
+{   
+	
+	target.draw(this->object1);
+	
 	
 }
 

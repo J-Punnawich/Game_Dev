@@ -62,7 +62,9 @@ void animations::Update(int row, float deltaTime)
 	}
 	else
 		uvrect.left = (currentImage.x + 1) * uvrect.width;
-	uvrect.width = -abs(uvrect.width); */
+	uvrect.width = -abs(uvrect.width); 
+
+	*/
 
 
 	

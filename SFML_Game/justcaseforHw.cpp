@@ -6,13 +6,13 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1080, 720), "Game from scratch!");
 
 	////// Circle
-	sf::CircleShape collision(100.f);
-	collision.setPosition({ 200.f, 200.f });
-	collision.setFillColor(sf::Color::Red);
+	sf::RectangleShape shape;
+	shape.setSize({ 200.f, 200.f });
+	shape.setFillColor(sf::Color::Red);
 
 	while (window.isOpen())
 	{
-		window.draw(collision);
+		window.draw(shape);
 		window.display();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{
@@ -29,41 +29,39 @@ int main()
 				break;
 			}
 		}
-		// on screen
-	//	std::cout << "Mouse pos  " << sf::Mouse::getPosition().x << " " << sf::Mouse::getPosition().y << "\n";
-
-
-	//	std::cout << "Mouse pos  " << sf::Mouse::getPosition(window).x << " " << sf::Mouse::getPosition(window).y << "\n";
-
-	//	std::cout << collision.getGlobalBounds().top + collision.getGlobalBounds().height << "\n";
-
+		
+		std::cout << sf::Mouse::getPosition(window).x << " " << sf::Mouse::getPosition(window).y << "\n"; 
+		
+		
+		
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-			
-			collision.setPosition((float)mousePos.x, (float)mousePos.y);
-			// top
-			if (collision.getGlobalBounds().top <= 0.f)
-			{
-				collision.setPosition(collision.getPosition().x, 0.f);
-			}
-			// bottom                       จุดบน         +      ความสูง     = จุดล่างง
-			if (collision.getGlobalBounds().top + collision.getGlobalBounds().height >= window.getSize().y)
-			{
-				collision.setPosition(collision.getPosition().x , window.getSize().y - collision.getGlobalBounds().height );
-			}
-			//left
-			if (collision.getGlobalBounds().left <= 0.f)
-			{
-				collision.setPosition(0.f, collision.getPosition().y);
-			}
-			//right
-			if (collision.getGlobalBounds().left + collision.getGlobalBounds().width >= window.getSize().x)
-			{
-				collision.setPosition(window.getSize().x - collision.getGlobalBounds().width,collision.getPosition().y);
-			}
+			sf::Vector2i MousePos = sf::Mouse::getPosition(window);
+
+			shape.setPosition(MousePos.x,MousePos.y);
 		}
 		
+		
+		if (shape.getGlobalBounds().top <= 0.f)
+		{
+			shape.setPosition(shape.getPosition().x, 0.f);
+
+		}
+		if (shape.getGlobalBounds().top + shape.getGlobalBounds().height >= window.getSize().y)
+		{
+			shape.setPosition(shape.getPosition().x, window.getSize().y - shape.getGlobalBounds().height);
+		}
+		//left           จุดซ้าย          <=  หน้าต่างซ้าย
+		if (shape.getGlobalBounds().left <= 0.f)
+		{
+			shape.setPosition(0.f, shape.getPosition().y);
+		}
+		//right        จุดซ้าย                                                    +       ความกว้าง      =จุดขวา                      
+		if (shape.getGlobalBounds().left + shape.getGlobalBounds().width >= window.getSize().x)
+		{
+			shape.setPosition(window.getSize().x - shape.getGlobalBounds().width, shape.getPosition().y);
+		}
+
 
 		window.clear();
 	}

@@ -9,7 +9,7 @@ using namespace sf;
 int main()
 {  
 	/// use 1720,1000
-	sf::RenderWindow window(sf::VideoMode(800,600), "Game", sf::Style::Close | sf::Style::Default);
+	//sf::RenderWindow window(sf::VideoMode(800,600), "Game", sf::Style::Close | sf::Style::Default);
 	
 	
 	std::srand(static_cast<unsigned>(time(NULL))); 

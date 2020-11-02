@@ -5,13 +5,19 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Network.hpp>
 #include <vector>
 #include <ctime>
+#include <sstream>
 
 #include "player.h"
 #include "animations.h"
 #include "Enermy.h"
 #include "object.h"
+#include "Item.h"
+
+using namespace sf;
 
 class game
 {
@@ -27,9 +33,12 @@ private:
 	sf::RenderWindow* window;
 	sf::Event ev;
 	sf::Font font;
-	sf::Text pointtext;
+	sf::Text pointText;
 
-	unsigned points;
+	
+	
+	//View
+	sf::View mainView;
 	
 	
 	//Private Functions
@@ -38,20 +47,24 @@ private:
 	void titlePlayer();
 	void titleEnermy();
 	void titleObject();
-	//void titleFont();
-	//void titleText();
+	void titleItem();
+	void titleFont();
+	void titleText();
+	void ResizeView(sf::RenderWindow& window,sf::View& view);
+	void renderGUI(sf::RenderTarget* targetGUI);
+	void updateGUI();
 
 
 	//Game objects
-
 	std::vector<Enermy*> enemies;
 	Enermy* enermy;
 	Player* player;
 	object* Object;
+	Item*   item;
 
 	sf::RectangleShape* bg1;
-	sf::Texture bodyTexture,enermyTexture,sandbarTexture,bgTexture;
-	sf::Sprite* body, enermy1;
+	sf::Texture bodyTexture,enermyTexture,sandbar1Texture, sandbar2Texture,bgTexture,speedTexture;
+	
 	
 public:
 
@@ -71,8 +84,9 @@ public:
 
 	void update();
 	void render();
-	
 
+	
+	
 	void randomenemies();
 	void updateCollision();
 	
