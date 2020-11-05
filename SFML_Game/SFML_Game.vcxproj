@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AiFollow.cpp" />
     <ClCompile Include="animations.cpp" />
     <ClCompile Include="Enermy.cpp" />
     <ClCompile Include="game.cpp" />
@@ -152,14 +153,18 @@
     <ClCompile Include="justcaseforHw.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AiFollow.h" />
+    <ClInclude Include="AiOption.h" />
     <ClInclude Include="animations.h" />
     <ClInclude Include="Enermy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

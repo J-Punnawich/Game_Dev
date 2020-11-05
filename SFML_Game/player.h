@@ -11,8 +11,8 @@ private:
 
 	//Variable
 	unsigned int row;
-	float speed;
-	int Points;
+	
+	float Points;
 	
 	//physics
 	float velocityMax;
@@ -37,7 +37,10 @@ public:
 	
 	sf::Texture bodyTexture;
 	sf::RectangleShape body;
-
+	
+	sf::Vector2f velocity;
+	float speedPlayer;
+	
 	//functions
 	void Updateplayer(float deltatime);
 	void setPosition();

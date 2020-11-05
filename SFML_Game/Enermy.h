@@ -6,7 +6,7 @@ class Enermy
 {	
 private:
 	sf::Texture  enermyTexture;
-	sf::RectangleShape  enermy;
+	
 	sf::Vector2u imageCount;
 	
 
@@ -15,19 +15,20 @@ private:
 
 	
 	unsigned int collum;
-	float speed;
+	
 
 
 public: 
 	Enermy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
-	
+	sf::RectangleShape  enermy1;
 	const sf::FloatRect getGlobalBounds() const;
 
 	void UpdateEnermy(float deltaTime);
 	void Drawenermy(sf::RenderTarget& target);
 	
 	void spawnEnermy(float pos_x, float pos_y);
-	void chasing();
+	
+	void titleAi();
 	
 	
 };

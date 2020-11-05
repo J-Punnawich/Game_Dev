@@ -7,11 +7,11 @@ class Item
 private:
 
 	//Variable
-	unsigned int collum;
+	unsigned int collum1, collum2;
 
 
 	//Class added
-	animations AnimationsItem;
+	animations AnimationsItemspeed;
 
 
 	//function
@@ -23,11 +23,11 @@ public:
 	const sf::FloatRect getGlobalBounds() const;
 
 	sf::Texture speedTexture;
-	sf::RectangleShape itemspeed;
+	sf::RectangleShape itemspeed, itemheart;
 
 	//functions
 	void UpitemSpeed(float deltatime);
-		 	
+	void Upitemheart(float deltatime);
 	void Drawitem(sf::RenderTarget& target);
 
 		

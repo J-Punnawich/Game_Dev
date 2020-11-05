@@ -8,8 +8,8 @@ class object
 
 private:
 
-	sf::Texture sandbar1Texture;
-	sf::RectangleShape object1;
+	sf::Texture objectTexture, portTexture;
+	
 
 	
 	
@@ -18,13 +18,15 @@ private:
 
 public:
 
-	object(sf::Texture* textureobject, sf::Vector2u totalImage , sf::Vector2u chooseImage);
+	object(sf::Texture* textureobject, sf::Vector2u totalImage);
 	sf::IntRect uvrect;
 	sf::Vector2u chooseImage;
 	sf::Vector2u totalImage;
-
-
+	sf::RectangleShape ob[31],port[4];
+	
+	
+	void uvrectOb(sf::RectangleShape* shape, sf::Vector2u chooseImage);
 	void DrawObject(sf::RenderTarget& target);
-	void setUvrectObject(sf::Vector2u currentImage);
+	
 };
 
