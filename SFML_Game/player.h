@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 #include "animations.h"
 #include "SFML\System.hpp"
+#include "Collider.h"
 class Player
 {
 private:
@@ -38,12 +39,17 @@ public:
 	sf::Texture bodyTexture;
 	sf::RectangleShape body;
 	
+	sf::Vector2f getPos() { return body.getPosition(); }
+	Collider GetCollider() { return Collider(body); }
+	
+	
+	
 	sf::Vector2f velocity;
 	float speedPlayer;
 	
 	//functions
 	void Updateplayer(float deltatime);
-	void setPosition();
+	void setPos();
 	void Drawplayer(sf::RenderTarget& target);
 	
 	float getPoints();

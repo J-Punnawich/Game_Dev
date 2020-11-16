@@ -15,10 +15,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	
 	this->body.setSize(sf::Vector2f(128.f, 128.f));
 	this->body.setTexture(&bodyTexture);
-	this->body.setOrigin(0.f,.0f);
 	this->body.setScale(0.8f, 0.8f);	
-
-	 
+	
 	
 }
 void Player::titlePhysics()
@@ -75,21 +73,21 @@ void Player::Updateplayer(float deltatime)
 	
 	body.move(velocity);
 	
-	std::cout << velocity.x << "\n" ;
+	std::cout << "VEc " << velocity.y << "\n" ;
 
 }
 
-void Player::setPosition()
+void Player::setPos()
 {
-	this->body.setPosition(0.f,0.f);  //origin spawn point 
-	std::cout << "collision!!" << "\n";
+	this->body.setPosition(500.f,0.f);  //origin spawn point 
+	
 }
 
 
 
 float Player::getPoints()
 { // แสดงผลคะแนน
-	this->Points = int((body.getPosition().y)/5.f);
+	this->Points = int((body.getPosition().y)/7.f);
   // std::cout << this->Points/20 <<" m" << "\n";
 	return this->Points;
 }

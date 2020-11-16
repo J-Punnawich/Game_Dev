@@ -23,7 +23,7 @@ Item::Item(sf::Texture* texture, sf::Vector2u imageCount, float switchTime):
 const sf::FloatRect Item::getGlobalBounds() const
 {
 	return this->itemspeed.getGlobalBounds();
-
+	
 }
 
 void Item::UpitemSpeed(float deltatime)

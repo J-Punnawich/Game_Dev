@@ -7,23 +7,13 @@ object::object(sf::Texture* textureobject, sf::Vector2u totalImage)
 {	
 	//this->chooseImage = chooseImage;
 	this->objectTexture = *textureobject;
+	
 
-
-
-	this->ob[0].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[1].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[2].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[3].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[4].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[5].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[6].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[7].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[8].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[9].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[10].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[11].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[12].setSize(sf::Vector2f(64.f, 64.f));
-	this->ob[13].setSize(sf::Vector2f(64.f, 64.f));
+	for (int i = 0; i < 14; i++)
+	{
+		this->ob[i].setSize(sf::Vector2f(64.f, 64.f));
+		this->ob[i].setScale(1.f, 1.f);
+	}
 
 	
 
@@ -49,16 +39,17 @@ object::object(sf::Texture* textureobject, sf::Vector2u totalImage)
 	uvrect.width = textureobject->getSize().x / float(totalImage.x);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน x
 	uvrect.height = textureobject->getSize().y / float(totalImage.y);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน y
 	
-	
 
 
 }
 
-void object::uvrectOb(sf::RectangleShape *shape ,sf::Vector2u chooseImage)
+
+void object::uvrectOb(sf::RectangleShape* shape ,sf::Vector2u chooseImage)
 {
+	
 	uvrect.left = chooseImage.x * uvrect.width;
 	uvrect.top = chooseImage.y * uvrect.height;
-     shape->setTextureRect(uvrect);
+	shape->setTextureRect(uvrect);
 	
 }
 
@@ -78,7 +69,7 @@ void object::DrawObject(sf::RenderTarget& target)
 	target.draw(this->ob[11]);
 	target.draw(this->ob[12]);
 	target.draw(this->ob[13]);
-
+	
 
 }
 

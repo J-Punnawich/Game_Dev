@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "Enermy.h"
 
+
 Enermy::Enermy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime):
 	Animationsenermy(texture, imageCount, switchTime)
 {
@@ -10,7 +11,7 @@ Enermy::Enermy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime):
 	this->enermy1.setSize(sf::Vector2f(128.f, 128.f));
 	this->enermy1.setTexture(texture);
 	
-
+	this->enermy1.setOrigin(0.f , 500.f);
 	// random positon ในแต่ละครั้งที่ run ได้ (เอาไว้ใช้กับ object ได้ดั)
 	//this->enermy1.setPosition(rand() % 500 + 3, rand() % 500 + 5); 
 	
@@ -28,20 +29,15 @@ void Enermy::UpdateEnermy(float deltaTime)
 {	
 	Animationsenermy.Updateinteract(collum, deltaTime);
 	enermy1.setTextureRect(Animationsenermy.uvrect);
-	enermy1.move(0.f, 3.f);
+	enermy1.move(0.f, 5.f);
 	
 }
 
 void Enermy::spawnEnermy(float pos_x,float pos_y)
 {
+	
 	this->enermy1.setPosition(pos_x,pos_y);
 }
-
-void Enermy::titleAi()
-{
-	
-}
-
 
 
 

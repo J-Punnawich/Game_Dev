@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 #include "Player.h"
 #include "animations.h"
+#include "Collider.h"
 class object
 {
 
@@ -24,9 +25,10 @@ public:
 	sf::Vector2u totalImage;
 	sf::RectangleShape ob[31],port[4];
 	
-	
+
 	void uvrectOb(sf::RectangleShape* shape, sf::Vector2u chooseImage);
 	void DrawObject(sf::RenderTarget& target);
-	
+
+
 };
 

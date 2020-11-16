@@ -28,7 +28,7 @@ public:
 	
 	void spawnEnermy(float pos_x, float pos_y);
 	
-	void titleAi();
+	
 	
 	
 };
