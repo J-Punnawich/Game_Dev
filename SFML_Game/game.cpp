@@ -33,6 +33,7 @@ void game::titleWindow()
    this->playState  = false;
    this->menuState  = true;
    this->scoreState = false;
+   this->ischase = true;
    this->deltaTime  = 0;
    
 
@@ -85,6 +86,7 @@ void game::titlebg()
     }
     sound.setBuffer(loadIn);
     selectSound.setBuffer(loadIn2);
+    selectSound.setVolume(30);
     sound.setPitch(-5);
     
             
@@ -336,6 +338,7 @@ void game::titleText()
     this->scoreText.setFillColor(sf::Color::White);
     this->scoreText.setCharacterSize(32);
     this->scoreText.setPosition(950.f, 800.f);
+    
    
 
     this->YourScoreText.setFont(this->font);
@@ -606,12 +609,14 @@ void game::chasing(const float& dt)
     moveVec.y = this->enermy->enermy1.getPosition().y - this->player->body.getPosition().y ;
     float vecLength = sqrt(pow(moveVec.x, 2) + pow(moveVec.y, 2));
     moveVec /= vecLength;
-
-    if (this->enermy->enermy1.getPosition().x != this->player->body.getPosition().x && this->enermy->enermy1.getPosition().y != this->player->body.getPosition().y)
+    if (ischase == true)
     {
-        this->enermy->enermy1.move(moveVec.x * 3.7f, moveVec.y + 5.f);
-    }
-
+        if (this->enermy->enermy1.getPosition().x != this->player->body.getPosition().x && this->enermy->enermy1.getPosition().y != this->player->body.getPosition().y)
+        {
+            this->enermy->enermy1.move(moveVec.x * 3.7f, moveVec.y + 5.f);
+        }
+    } else 
+        this->enermy->enermy1.move(0.f,0.f);
   //  if (this->enermy->enermy1.getPosition().x != this->player->body.getPosition().x  || this->enermy->enermy1.getPosition().y == this->player->body.getPosition().y)
   //  {
    //     this->enermy->enermy1.move(moveVec.x * 3.5f, moveVec.y * 0.f);
@@ -863,7 +868,7 @@ void game::updateCollision()
 
     for (int j = 0; j <= 4; j++)
     {   
-          if(this->distance(&player->body, this->sandbar[j], sf::Vector2f(-56.9f, -30.f)) && this->getObject == false )
+        /*  if(this->distance(&player->body, this->sandbar[j], sf::Vector2f(-56.9f, -30.f)) && this->getObject == false )
         {
               sound.play();
             //this->player->body.move(-5.f, -5.f);
@@ -872,7 +877,7 @@ void game::updateCollision()
             this->hp -= 1;
             
         }
-        this->objectCollision();
+        this->objectCollision();*/
 
 
         if (this->sandbar[j]->getPosition().x == this->sandbar[rand() % 4]->getPosition().x && this->sandbar[j]->getPosition().y == this->sandbar[rand() % 4]->getPosition().y)
@@ -883,7 +888,8 @@ void game::updateCollision()
 
 
 
-
+            ///////////////////////////////////////////////
+        
         if (this->distance(&enermy->enermy1, this->sandbar[j], sf::Vector2f(-30.9f, -20.f)) && this->getObjectenermy == false)
         {
             
@@ -893,8 +899,22 @@ void game::updateCollision()
             
 
         }
-        this->objectCollision();
+       
+        if (this->getObjectenermy == true)
+        {
 
+            this->ischase = false;
+
+
+
+            if (this->millis - this->delayObjectenermy1 > 3500)
+            {
+                printf("Yes\n");
+                this->ischase = true;
+                this->getObjectenermy = false;
+            }
+
+        }
         
       
     }
@@ -949,20 +969,7 @@ void game::objectCollision()
 
 
 
-    if (this->getObjectenermy == true)
-    {
-        
-        this->enermy->enermy1.move(0.f,0.f);
-        printf("Yes\n");
-     
-
-        if (this->millis - this->delayObjectenermy1 > 3500)
-        {
-            this->enermy->enermy1.move(moveVec.x * 3.7f, moveVec.y + 5.f);
-            this->getObject = false;
-        }
-
-    }
+    
 }
 
 

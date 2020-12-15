@@ -122,11 +122,13 @@ public:
 	float deltaTime = 0.f;
 	sf::Clock clock;
 	std::stringstream mm;
+	bool ischase;
 	bool scoreState;
 	bool howtoplayState;
 	bool menuState;
 	bool playState;
 	bool endGame;
+
 	bool gethp = false;
 	bool losshp = false;
 	int Score;

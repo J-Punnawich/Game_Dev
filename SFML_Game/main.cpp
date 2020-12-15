@@ -273,7 +273,7 @@ int main()
 				{
 					Game.window->draw(Game.cursor);
 				}
-				Game.scoreText.setString(Game.mm.str());
+				//Game.scoreText.setString(Game.mm.str());
 
 				Game.window->draw(Game.endGameText);
 				Game.window->draw(Game.scoreText);
