@@ -17,7 +17,7 @@ private:
 	
 	//physics
 	float velocityMax;
-	float accerlerate;
+	
 
 
 	//Class added
@@ -35,7 +35,8 @@ public:
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime,float speed);
 	
 	const sf::FloatRect getGlobalBounds() const;
-	
+	float accerlerate;
+
 	sf::Texture bodyTexture;
 	sf::RectangleShape body;
 	
@@ -50,6 +51,7 @@ public:
 	//functions
 	void Updateplayer(float deltatime);
 	void setPos();
+	void animateplayer(float deltatime);
 	void Drawplayer(sf::RenderTarget& target);
 	
 	float getPoints();

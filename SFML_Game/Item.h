@@ -7,7 +7,7 @@ class Item
 private:
 
 	//Variable
-	unsigned int collum1, collum2;
+	unsigned int collum1, collum2,collum3 ;
 
 
 	//Class added
@@ -23,11 +23,12 @@ public:
 	const sf::FloatRect getGlobalBounds() const;
 
 	sf::Texture speedTexture;
-	sf::RectangleShape itemspeed, itemheart;
+	sf::RectangleShape itemspeed, itemheart,enermyInk;
 
 	//functions
 	void UpitemSpeed(float deltatime);
 	void Upitemheart(float deltatime);
+	void UpenermyInk(float deltatime);
 	void Drawitem(sf::RenderTarget& target);
 
 		

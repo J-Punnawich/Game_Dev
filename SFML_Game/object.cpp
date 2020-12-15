@@ -1,8 +1,4 @@
 ﻿#include "object.h"
-
-
-
-
 object::object(sf::Texture* textureobject, sf::Vector2u totalImage)
 {	
 	//this->chooseImage = chooseImage;
@@ -12,6 +8,7 @@ object::object(sf::Texture* textureobject, sf::Vector2u totalImage)
 	for (int i = 0; i < 14; i++)
 	{
 		this->ob[i].setSize(sf::Vector2f(64.f, 64.f));
+		//this->ob[i].setOrigin(this->ob[i].getSize()/2.f);
 		this->ob[i].setScale(1.f, 1.f);
 	}
 
@@ -39,8 +36,6 @@ object::object(sf::Texture* textureobject, sf::Vector2u totalImage)
 	uvrect.width = textureobject->getSize().x / float(totalImage.x);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน x
 	uvrect.height = textureobject->getSize().y / float(totalImage.y);  // ขนาดรูป หารด้วย จำนวนภาพในรูปแกน y
 	
-
-
 }
 
 

@@ -152,9 +152,9 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
-    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animations.h" />
@@ -163,7 +163,6 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="object.h" />
-    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

@@ -16,6 +16,4 @@ private:
 	sf::RectangleShape& body;
 
 
-
-
 };

@@ -30,6 +30,7 @@ private:
 	
 	//Variable
 	sf::Vector2u imageCount;
+	sf::Vector2f moveVec;
 	float spawnTimer;
 	float spawnTimerMax;
 	float speedNow;
@@ -37,12 +38,14 @@ private:
 	float itemtimerMax;
 	float timeCount;	
 	float timeSet;
-	unsigned hpMax;
-	unsigned hp;
+	unsigned hpMax = 3;
+	unsigned hp = 3;
+	unsigned int  storeItem = 0;
+	unsigned storeMax = 0;
 	bool quit;
+	bool spawnEnermy = false;
 	
-	int mode;
-	bool paused;
+	
 	
 	bool showScore;
 	bool fck = true;
@@ -54,10 +57,10 @@ private:
 	
 	
 	sf::Font font;
-	sf::Text pointText;
+	
 	
 	sf::Text highscoreNameText[5], highscoreScoreText[5], highscoreTitle;
-	sf::Text StartText, howtoPlay,ScoreText,QuitText;
+	sf::Text StartText, howtoPlay,ScoremenuText,QuitText;
 	
 	//View
 	sf::View mainView;
@@ -82,7 +85,7 @@ private:
 	void titleItem();
 	void titleFont();
 	void titleText();
-	void titlehighScore();
+	
 	
 	//void titlePmenu();
 
@@ -101,6 +104,7 @@ private:
 	Item* item;
 	object *Object;
 	Platform *platform;
+	animations* Animation;
 	//Collider* playerCollision;
 	
 	//PauseMenu pmenu;
@@ -111,31 +115,52 @@ public:
 
 	//constructor 
 	game();
-	void regame();
+
 
 	
 	//variable
 	float deltaTime = 0.f;
 	sf::Clock clock;
-
+	std::stringstream mm;
 	bool scoreState;
+	bool howtoplayState;
 	bool menuState;
 	bool playState;
 	bool endGame;
+	bool gethp = false;
+	bool losshp = false;
 	int Score;
 	sf::RectangleShape bar;
 	sf::RectangleShape cursor;
 	sf::Clock timeMliis;
 	sf::Clock timeSec;
 	unsigned long millis;
-	int delay = 0 ;
+	
 	unsigned long timeGame;
 	unsigned long pausetimeGame;
 	sf::RenderWindow* window;
 	sf::Event evnt;
 	sf::Text endGameText;
+	bool paused;
+	sf::SoundBuffer loadIn,loadIn2;
+	sf::Sound sound,selectSound;
 
+	int delay = 0;
+	int delayEnermy = 0;
+	int delayUseitem = 0;
+	bool useItem = false;
+	sf::Text pointText;
+	int delayItem1 = 0;
+	bool getItem1 = false;
 
+	int delayItem2 = 0;
+	bool getItem2 = false;
+
+	int delayObject = 0;
+	bool getObject = false;
+	bool getObjectenermy = false;
+	int delayObjectenermy1 = 0;
+	int mode = 1;
 
 	float totalTime = 0;
 
@@ -145,44 +170,56 @@ public:
 
 	std::string playerName;
 
-	sf::Text playerNametext;
+	sf::Text playerNametext,scoreText, YourScoreText, EnterYourNameText;
+	sf::Text toMove,touseItem;
 	//function
 	
 	void run();
 
 
-	void pollEvent();
+	
 	void updateBg(const float& dt);
-	void updateInput(const float& dt);
+	
 	void update();
 	void render();
 	void endState();
 	void pauseState();
 	void unpauseState();
 	void menu();
-	void highScoreMenu();
+	void titlehowtoplay();
+
+	bool distance(sf::RectangleShape* other, sf::RectangleShape* other2, sf::Vector2f dis);
+
 
 	void chasing(const float& dt);
 	void randomObject();
 	void updateSpawnOb(sf::RectangleShape* ob, float gabOb_y, float forwardOb);
+	
 	void randomenemies();
 	void updateCollision();
-	void itemTimer();
-	
-	sf::RectangleShape* bg[6], 
-					  * sandbar1,* sandbar2,* sandbar3,* sandbar4,
+	void objectCollision();
+
+	sf::RectangleShape* bg[6],
+					  * bgMenu, 
+					  * sandbar[4],
 					  * port[3],
-					  * heart[3];
+					  * heart[3],
+					  * speed[3],
+					  * ripple,
+					   howtoplayPic[4];
 
 	sf::CircleShape Select;
 
 	sf::Texture bodyTexture, 
 				enermyTexture, 
 				sandbar1Texture,  sandbar2Texture,sandbar3Texture ,sandbar4Texture, 
-				bgTexture, 
+				bgTexture,
+				bgMenuTexture,
 				speedTexture, 
 				objectTexture,
 				interfaceTexture,
-				portTexture[3];
+				rippleTexture,
+				portTexture[3],
+				slowTexture;
 	
 }; 
